@@ -1,0 +1,68 @@
+<!-- templates/result.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>CV Upload Result</title>
+
+    <style>
+      .green {
+        background-color: #28a745;
+        color: white;
+      }
+      .light_green {
+        background-color: #85ff97;
+        color: rgb(0, 0, 0);
+      }
+      .yellow {
+        background-color: #ffff14;
+        color: rgb(0, 0, 0);
+      }
+      .orange {
+        background-color: #ffc107;
+        color: white;
+      }
+      .red {
+        background-color: #dc3545;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1><a href="http://127.0.0.1:5000/">IRIS</a></h1>
+        <h3>Results for {{ filename }}</h3>
+        <p>Job Title: {{ title }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Score Category</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="{{ 'green' if responsibilities_value == 'Very High' else 'light_green' if responsibilities_value == 'High' else 'yellow' if responsibilities_value == 'Moderate' else 'orange'  if responsibilities_value == 'Low'  else 'red'  if responsibilities_value == 'Very Low' }}">
+            <td>Responsibilities Score</td>
+            <td>{{ responsibilities_value }}</td>
+          </tr>
+          <tr class="{{   'green' if requirements_value == 'Very High' else 'light_green' if requirements_value == 'High' else 'yellow' if requirements_value == 'Moderate' else 'orange'  if requirements_value == 'Low'  else 'red'  if requirements_value == 'Very Low' }}">
+            <td>Requirements Score</td>
+            <td>{{ requirements_value }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Explanation</h2>
+      <p>{{ explanation }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
